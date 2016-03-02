@@ -133,7 +133,7 @@ public class NonSnapshotUpdateVersionsMojo extends NonSnapshotBaseMojo {
     }
   }
 
-  private void markDirtyWhenRevisionChangedOrInvalidQualifier(List<MavenModule> mavenModules) {
+  protected void markDirtyWhenRevisionChangedOrInvalidQualifier(List<MavenModule> mavenModules) {
     for (MavenModule mavenModule : mavenModules) {
       if (mavenModule.getVersion() == null) {
         LOG.info("No version found for artifact {}:{}. Assigning a new version.", mavenModule.getGroupId(), mavenModule.getArtifactId());
