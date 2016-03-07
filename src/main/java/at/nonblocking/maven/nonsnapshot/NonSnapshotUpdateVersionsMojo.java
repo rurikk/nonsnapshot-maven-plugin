@@ -133,7 +133,7 @@ public class NonSnapshotUpdateVersionsMojo extends NonSnapshotBaseMojo {
     }
   }
 
-  private void markDirtyWhenRevisionChangedOrInvalidQualifier(List<MavenModule> mavenModules) {
+  protected void markDirtyWhenRevisionChangedOrInvalidQualifier(List<MavenModule> mavenModules) {
     for (MavenModule mavenModule : mavenModules) {
       if (mavenModule.getVersion() == null) {
         LOG.info("No version found for artifact {}:{}. Assigning a new version.", mavenModule.getGroupId(), mavenModule.getArtifactId());
@@ -191,7 +191,7 @@ public class NonSnapshotUpdateVersionsMojo extends NonSnapshotBaseMojo {
     }
   }
 
-  private void updateUpstreamArtifacts(List<MavenModule> mavenModules) {
+  protected void updateUpstreamArtifacts(List<MavenModule> mavenModules) {
     for (MavenModule mavenModule : mavenModules) {
       //Parent
       if (mavenModule.getParent() != null) {
@@ -211,7 +211,7 @@ public class NonSnapshotUpdateVersionsMojo extends NonSnapshotBaseMojo {
     }
   }
 
-  private UpdatedUpstreamMavenArtifact updateUpstreamArtifact(MavenArtifact upstreamArtifact) {
+  protected UpdatedUpstreamMavenArtifact updateUpstreamArtifact(MavenArtifact upstreamArtifact) {
     if (!(upstreamArtifact instanceof MavenModule)) {
       ProcessedUpstreamDependency upstreamDependency = getUpstreamDependencyHandler().findMatch(upstreamArtifact, getProcessedUpstreamDependencies());
       if (upstreamDependency != null) {
